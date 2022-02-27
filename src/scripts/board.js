@@ -3,8 +3,6 @@ import Cell from "./cell.js"
 class Board {
   constructor() {
     this.grid = this.makeGrid();
-
-    this.animate();
   }
 
   makeGrid() {
@@ -25,17 +23,12 @@ class Board {
     }
   }
 
-  animate() {
-    const canvas = document.getElementById('game-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 900;
-    canvas.height = 600;
-
-    ctx.fillStyle = 'red';
-    ctx.fillRect(0, 0, 900, 100);   //start top left corner
-    this.handleGrid();
-
+  handleDefender() {
+    for (let i = 0; i < this.defenders.length; i++) {
+      this.defenders[i].draw()
+    }
   }
+
 }
 
 export default Board;
