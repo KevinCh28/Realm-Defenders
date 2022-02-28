@@ -10,7 +10,7 @@ class Cell {
     const canvas = document.getElementById('game-canvas');
     const ctx = canvas.getContext('2d');
 
-    ctx.strokeStyle = 'blue';     //remove color later, have it for now to see
+    ctx.strokeStyle = 'blue';
     ctx.strokeRect(this.x, this.y, this.width, this.height);
   }
 }

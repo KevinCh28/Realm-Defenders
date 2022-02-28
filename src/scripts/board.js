@@ -3,6 +3,8 @@ import Cell from "./cell.js"
 class Board {
   constructor() {
     this.grid = this.makeGrid();
+
+    // this.handleGrid()
   }
 
   makeGrid() {
@@ -23,11 +25,11 @@ class Board {
     }
   }
 
-  handleDefender() {
-    for (let i = 0; i < this.defenders.length; i++) {
-      this.defenders[i].draw()
-    }
-  }
+  // handleDefender() {
+  //   for (let i = 0; i < this.defenders.length; i++) {
+  //     this.defenders[i].draw()
+  //   }
+  // }
 
 }
 
