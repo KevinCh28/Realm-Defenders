@@ -18,7 +18,6 @@ class Enemy {
   draw() {
     const canvas = document.getElementById('game-canvas');
     const ctx = canvas.getContext('2d');
-
     ctx.fillStyle = 'gray';
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }

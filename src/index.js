@@ -5,10 +5,8 @@ window.Board = Board;
 window.GameView = GameView;
 
 document.addEventListener('DOMContentLoaded', () => {
-  let canvas = document.getElementById('game-canvas');
-  let ctx = canvas.getContext('2d');
   
-  let gv = new GameView(ctx);
+  let gv = new GameView();
   gv.start()
 
 });

@@ -3,8 +3,8 @@ import Enemy from "./enemy.js"
 import Defender from "./defender.js";
 
 class GameView {
-  constructor (ctx) {
-    this.ctx = ctx;
+  constructor () {
+    // this.ctx = ctx
     this.game = new Board();
     this.time = 0;
     this.defenders = [];
@@ -18,7 +18,10 @@ class GameView {
     const ctx = canvas.getContext('2d');
     canvas.width = 900;
     canvas.height = 600;
-    
+    let that = this;
+
+    this.myMenu(ctx);
+
     if (this.time % 5000 === 0) {
       let yPos = Math.floor(Math.random() * 5);   //random 0-4
       this.enemies.push(new Enemy(yPos + 1)) //random 0-4 + 1 = 1-5
@@ -27,40 +30,46 @@ class GameView {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw()
       this.enemies[i].move()
-      if (this.enemies[i].x <= 0) this.gameOver(ctx);
+      if (this.enemies[i].x < 0) {
+        this.gameOver(ctx);
+      } else {
+        // requestAnimationFrame(this.start())
+      //   setInterval(() => {
+      //     this.start()
+      //   }, 1000/60 );
+      }
     }
 
     this.time += 1;
-    canvas.addEventListener('click', function(e) {
+
+    canvas.addEventListener('click', function(e) {    //not sure how to bind 'this'
       let posX = e.x - (e.x % 100);
       let posY = e.y - (e.y % 100);
-
-      if (this.resource >= 100 && posY >= 100 && avaibleSpot()) {
-        this.defenders.push(new Defender(posX, posY))
-        this.resource -= this.defenders[this.denfenders.length - 1].cost
+      console.log(posX, posY)
+      // console.log(that)
+      if (that.resource >= 100 && posY >= 100 && that.avaibleSpot(posX, posY)) {
+        that.defenders.push(new Defender(posX, posY))
+        // console.log(that.defenders)
+        that.resource -= 100
       }
     })
 
-    for (let i = 0; i < this.defenders.length; i++) {
-      if (this.defenders.length >= 1) {
+    if (this.defenders.length > 0) {
+      for (let i = 0; i < this.defenders.length; i++) {
         this.defenders[i].draw()
       }
     }
-    
-
-    // setInterval(() => {
-    //   this.start()
-    // },50);
   }
 
   gameOver(ctx) {
     ctx.fillStyle = 'red';
     ctx.font = '70px Moonhouse';
     ctx.fillText('Game Over!', 300, 300);
-    this.clearInterval()
+    // this.clearInterval()
+    cancelAnimationFrame()
   }
 
-  avaibleSpot() {
+  avaibleSpot(posX, posY) {
     for (let i = 0; i < this.defenders.length; i ++) {
       if (this.defenders[i].x === posX && this.defenders[i].y === posY) {
         return false
@@ -69,6 +78,22 @@ class GameView {
     return true
   }
 
+  myMenu(ctx) {
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Moonhouse';
+    ctx.fillText('High Score: ' + this.highScore, 10, 30);
+    ctx.fillText('Resource: ' + this.resource, 10, 70);
+  }
+
+  // eventHandler(e) {
+  //   let posX = e.x - (e.x % 100);
+  //   let posY = e.y - (e.y % 100);
+    
+  //   if (this.resource >= 100 && posY >= 100 && this.avaibleSpot(posX, posY)) {
+  //     this.defenders.push(new Defender(posX, posY))
+  //     this.resource -= 100
+  //   }
+  // }
 }
 
 
