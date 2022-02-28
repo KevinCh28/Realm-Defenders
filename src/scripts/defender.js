@@ -1,4 +1,4 @@
-const knight = new Image('./stlye/Defender.png');
+const knight = new Image('./stlyes/knight.png');
 
 class Defender {
   constructor(x, y) { //x and y comes from click on the grid
@@ -30,7 +30,7 @@ class Defender {
     // const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'blue';
     ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.drawImage(knight, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //s=source, d=destination
+    ctx.drawImage(knight, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //file, first4 source, last4 destination
   }
 
 }
