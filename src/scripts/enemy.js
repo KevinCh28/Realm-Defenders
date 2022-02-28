@@ -5,7 +5,7 @@ class Enemy {
     this.x = 900;   //start at the right side
     this.y = y * 100;
     this.width = 100;
-    this.length = 100;
+    this.height = 100;
     this.hp = 100;
     this.attack = false
     this.speed = 0.1;
