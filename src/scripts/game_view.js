@@ -34,9 +34,9 @@ class GameView {
         this.gameOver(ctx);
       } else {
         // requestAnimationFrame(this.start())
-      //   setInterval(() => {
-      //     this.start()
-      //   }, 1000/60 );
+        // setInterval(() => {
+        //   this.start()
+        // }, 1000/60 );
       }
     }
 
@@ -45,11 +45,9 @@ class GameView {
     canvas.addEventListener('click', function(e) {    //not sure how to bind 'this'
       let posX = e.x - (e.x % 100);
       let posY = e.y - (e.y % 100);
-      console.log(posX, posY)
-      // console.log(that)
+      // console.log(posX, posY)
       if (that.resource >= 100 && posY >= 100 && that.avaibleSpot(posX, posY)) {
         that.defenders.push(new Defender(posX, posY))
-        // console.log(that.defenders)
         that.resource -= 100
       }
     })
@@ -59,6 +57,8 @@ class GameView {
         this.defenders[i].draw()
       }
     }
+
+    this.collision()
   }
 
   gameOver(ctx) {
@@ -85,15 +85,29 @@ class GameView {
     ctx.fillText('Resource: ' + this.resource, 10, 70);
   }
 
-  // eventHandler(e) {
-  //   let posX = e.x - (e.x % 100);
-  //   let posY = e.y - (e.y % 100);
-    
-  //   if (this.resource >= 100 && posY >= 100 && this.avaibleSpot(posX, posY)) {
-  //     this.defenders.push(new Defender(posX, posY))
-  //     this.resource -= 100
-  //   }
-  // }
+  collision() {
+    for (let i = 0; i < this.defenders.length; i++) {
+      for (let j = 0; j < this.enemies.length; j++) {
+        if (this.isCollidedWith(this.defenders[i], this.enemies[j])) {
+          this.defenders[i].hp -= 0.1;
+          this.enemies[j].speed = 0;
+        } 
+        if (this.defenders[i].hp <= 0) {
+          this.defenders.splice(i, 1);
+          i--;
+          this.enemies[j].speed = 0.1;
+        }
+      }
+    }
+  }
+
+  isCollidedWith(obj1, obj2) {            //assume obj1 is on the left side
+    if (obj1.y === obj2.y && (obj1.x + obj1.width) > obj2.x) { 
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 
