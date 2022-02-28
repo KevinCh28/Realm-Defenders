@@ -4,7 +4,7 @@ class Projectile {
     this.y = y;
     this.width = 20;
     this.height = 20;
-    this.speed = 1;
+    this.speed = 5;
     this.damage = 20;
   }
 

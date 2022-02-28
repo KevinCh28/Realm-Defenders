@@ -1,4 +1,4 @@
-import Projectile from "./projectile";
+const knight = new Image('./stlye/Defender.png');
 
 class Defender {
   constructor(x, y) { //x and y comes from click on the grid
@@ -10,6 +10,19 @@ class Defender {
     this.hp = 200;
     this.attack = false;
     this.cost = 100
+    this.frame = 0;
+    this.minFrame = 0;
+    this.maxFrame = 7;
+    this.spriteWidth = 63.5;
+    this.spriteHeight = 67;
+  }
+
+  move() {
+    if (this.frame < this.maxFrame) {
+      this.frame += 1;
+    } else {
+      this.frame = this.minFrame
+    }
   }
 
   draw(ctx) {
@@ -17,6 +30,7 @@ class Defender {
     // const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'blue';
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(knight, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //s=source, d=destination
   }
 
 }
