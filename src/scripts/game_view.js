@@ -33,6 +33,7 @@ class GameView {
     }
 
     this.repeat = requestAnimationFrame(this.start.bind(this))
+
     for (let i = 0; i < this.enemies.length; i++) {
       if (this.enemies[i].x < 0) {
         this.gameOver(this.ctx);
@@ -119,6 +120,7 @@ class GameView {
     if (this.defenders.length > 0) {
       for (let i = 0; i < this.defenders.length; i++) {
         this.defenders[i].draw(this.ctx)
+        this.defenders[i].move()
 
         if (this.time % 150 === 0) {
           this.projectiles.push(new Projectile(this.defenders[i].x + 110, this.defenders[i].y + 40))
