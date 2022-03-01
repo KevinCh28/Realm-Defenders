@@ -25,6 +25,7 @@ class GameView {
     let that = this;
     this.ctx.clearRect(0, 0, 900, 600);
     this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
+    // canvas.removeEventListener('click', restart)
 
     // this.mousePos = canvas.getBoundingClientRect() ///???
 
@@ -43,7 +44,7 @@ class GameView {
 
     for (let i = 0; i < this.enemies.length; i++) {
       if (this.enemies[i].x < -35) {
-        this.gameOver(this.ctx);
+        this.gameOver(this.ctx, canvas);
       }
     }
 
@@ -71,11 +72,15 @@ class GameView {
 ////////////////////////////
 ////////////////////////////
 
-  gameOver(ctx) {
+  gameOver(ctx, canvas) {
     ctx.fillStyle = 'red';
     ctx.font = '70px Moonhouse';
     ctx.fillText('Game Over!', 300, 300);
+
+    ctx.font = '20px Moonhouse';
+    ctx.fillText('click to restart', 400, 400)
     cancelAnimationFrame(this.repeat)
+    this.newGame(canvas)
   }
 
   avaibleSpot(posX, posY) {
@@ -100,11 +105,12 @@ class GameView {
         if (this.defenders[i] && this.enemies[j] && this.isCollidedWith(this.defenders[i], this.enemies[j])) {
           this.defenders[i].hp -= 1;
           this.enemies[j].speed = 0;
-        } 
-        if (this.defenders[i] && this.defenders[i].hp <= 0) {
-          this.defenders.splice(i, 1);
-          i--;
-          this.enemies[j].speed = 1;
+
+          if (this.defenders[i] && this.defenders[i].hp <= 0) {
+            this.defenders.splice(i, 1);
+            i--;
+            this.enemies[j].speed = 1;
+          }
         }
       }
     }
@@ -182,13 +188,21 @@ class GameView {
 
   getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
-    // console.log(rect)
-    // console.log(event)
 
     return {
       x: event.clientX - rect.left,
       y: event.clientY - rect.top
     }
+  }
+
+  newGame(canvas) {
+
+    let restart = canvas.addEventListener('click', function() {
+      // Program.restart()
+      // document.restart()
+      // document.reload()
+      window.location.reload()
+    })
   }
 
 }

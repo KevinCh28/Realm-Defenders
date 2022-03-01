@@ -13,7 +13,7 @@ class Projectile {
     this.spriteHeight = 242;
 
     this.img = new Image();
-    this.img.src = 'images/weapon_sprite.png';
+    this.img.src = 'images/projectile1.png';
     this.img.alt = 'alt';
 
     this.time = 0;
