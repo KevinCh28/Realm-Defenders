@@ -8,13 +8,14 @@ class Enemy {
     this.height = 100;
     this.hp = 100;
     this.speed = 1;
+
     this.frame = 0;
     this.minFrame = 0;
     this.maxFrame = 11;
     this.spriteWidth = 522;
     this.spriteHeight = 422;
     this.img = new Image();
-    this.img.src = '../../images/ghost.png';
+    this.img.src = 'images/ghost.png';
     this.img.alt = 'alt';
     this.time = 0
   }
@@ -23,7 +24,7 @@ class Enemy {
     this.x -= this.speed;
     this.time += 1
 
-    if (this.time % 10 == 0) {
+    if (this.time % 8 == 0) {
       if (this.frame < this.maxFrame) {
         this.frame += 1;
       } else {

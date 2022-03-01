@@ -14,12 +14,19 @@ class GameView {
     this.resource = 400;
     this.highScore = 0;
     this.killCount = 0;
+
+    // this.backGroundImg = new Image();
+    // this.backGroundImg.src = '../../images/game_background_4.png';
+    // this.backGroundImg.alt = 'alt';
   }
 
   start() {
     const canvas = document.getElementById('game-canvas');
     let that = this;
     this.ctx.clearRect(0, 0, 900, 600);
+    // this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
+
+    // this.mousePos = canvas.getBoundingClientRect() ///???
 
     if (this.time % 500 === 0) {
       let yPos = Math.floor(Math.random() * 5);   //random 0-4
@@ -41,16 +48,16 @@ class GameView {
     }
 
     canvas.addEventListener('click', function(e) {    //not sure how to bind 'this'
-      let posX = e.x - (e.x % 100);
-      let posY = e.y - (e.y % 100);
+      let mousePos = that.getMousePosition(canvas, e)
+
+      let posX = mousePos.x - (mousePos.x % 100);
+      let posY = mousePos.y - (mousePos.y % 100);
 
       if (that.resource >= 100 && posY >= 100 && that.avaibleSpot(posX, posY)) {
         that.defenders.push(new Defender(posX, posY))
         that.resource -= 100
       }
     })
-
-    
 
     this.myMenu(this.ctx);
     this.drawEnemy()
@@ -82,9 +89,9 @@ class GameView {
 
   myMenu(ctx) {
     ctx.fillStyle = 'black';
-    ctx.font = '20px Moonhouse';
-    ctx.fillText('High Score: ' + this.highScore, 10, 30);
-    ctx.fillText('Resource: ' + this.resource, 10, 70);
+    ctx.font = 'bold 20px Moonhouse';
+    ctx.fillText('HIGH SCORE: ' + this.highScore, 400, 30);
+    ctx.fillText('RESOURCE: ' + this.resource, 400, 70);
   }
 
   enemyCollidesWithDefender() {
@@ -166,6 +173,17 @@ class GameView {
           j--;
         }
       }
+    }
+  }
+
+  getMousePosition(canvas, event) {
+    let rect = canvas.getBoundingClientRect();
+    // console.log(rect)
+    // console.log(event)
+
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
     }
   }
 
