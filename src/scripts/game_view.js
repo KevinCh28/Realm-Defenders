@@ -154,6 +154,10 @@ class GameView {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw(this.ctx)
       this.enemies[i].move()
+
+      if (this.highScore > 6000) {
+        this.enemies[i].speed = 2
+      }
     }
   }
   
