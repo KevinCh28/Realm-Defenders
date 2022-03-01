@@ -9,6 +9,7 @@ class Enemy {
     this.hp = 100;
     this.speed = 1;
     this.skins = [];
+    this.selectedSkin;
     this.time = 0
 
     this.frame = 0;
@@ -32,6 +33,7 @@ class Enemy {
     this.skins.push(this.img1)
     this.skins.push(this.img2)
     this.skins.push(this.img3)
+    this.selectedSkin = this.skins[Math.floor(Math.random()* 3)]
   }
 
   move() {
@@ -52,7 +54,7 @@ class Enemy {
     // const ctx = canvas.getContext('2d');
     // ctx.fillStyle = 'gray';
     // ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.drawImage(this.skins[0], this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.selectedSkin, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
   }
 //Math.floor(Math.random()* 3)
 }
