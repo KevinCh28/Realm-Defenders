@@ -15,16 +15,16 @@ class GameView {
     this.highScore = 0;
     this.killCount = 0;
 
-    // this.backGroundImg = new Image();
-    // this.backGroundImg.src = '../../images/game_background_4.png';
-    // this.backGroundImg.alt = 'alt';
+    this.backGroundImg = new Image();
+    this.backGroundImg.src = 'images/game_background_4.png';
+    this.backGroundImg.alt = 'alt';
   }
 
   start() {
     const canvas = document.getElementById('game-canvas');
     let that = this;
     this.ctx.clearRect(0, 0, 900, 600);
-    // this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
+    this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
 
     // this.mousePos = canvas.getBoundingClientRect() ///???
 

@@ -14,10 +14,10 @@ class Defender {
     this.spriteWidth = 522;
     this.spriteHeight = 422;
 
-    // this.img = new Image();
-    // this.img.src = 'images/defender1.png';
-    // this.img.alt = 'alt';
-    // this.time = 0;
+    this.img = new Image();
+    this.img.src = 'images/defender1.png';
+    this.img.alt = 'alt';
+    this.time = 0;
   }
 
   move() {
@@ -35,9 +35,9 @@ class Defender {
   draw(ctx) {
     // const canvas = document.getElementById('game-canvas');
     // const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-    // ctx.drawImage(this.img, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //file, first4 source, last4 destination
+    // ctx.fillStyle = 'blue';
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.img, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //file, first4 source, last4 destination
   }
 
 }
