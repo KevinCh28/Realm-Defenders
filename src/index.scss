@@ -1,14 +1,40 @@
 body {
-    background-color: black;
+  background-color: black;
+}
+
+#header {
+  // height: 60px;
+  // background-color: white;
+  // align-self: center;
+  // margin: auto;
+  // display: inline-block;
+  // position: relative;
+  position: fixed;
+  padding: 2em;
+  left: 50%;
+  top: 2%;
+  transform: translateX(-50%);
+}
+
+#github-button {
+  position: fixed;
+  padding: 2em;
+  left: 50%;
+  top: 2%;
+  transform: translateX(-50%);
+}
+
+#game {
+  position: fixed;
 }
 
 #game-canvas {
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 900px;
-    height: 600px;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
 }
 
