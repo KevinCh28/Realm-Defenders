@@ -130,7 +130,7 @@ class GameView {
         this.defenders[i].move()
 
         if (this.time % 150 === 0) {
-          this.projectiles.push(new Projectile(this.defenders[i].x + 110, this.defenders[i].y + 40))
+          this.projectiles.push(new Projectile(this.defenders[i].x, this.defenders[i].y + 20))
         }
       }
     }

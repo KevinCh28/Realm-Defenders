@@ -9,24 +9,21 @@ body {
   // margin: auto;
   // display: inline-block;
   // position: relative;
-  position: fixed;
-  padding: 2em;
-  left: 50%;
-  top: 2%;
-  transform: translateX(-50%);
+  // position: fixed;
+  // padding: 2em;
+  // left: 50%;
+  // top: 2%;
+  // transform: translateX(-50%);
 }
 
 #github-button {
   position: fixed;
-  padding: 2em;
+  // padding: 2em;
   left: 50%;
   top: 2%;
   transform: translateX(-50%);
 }
 
-#game {
-  position: fixed;
-}
 
 #game-canvas {
   background-color: white;

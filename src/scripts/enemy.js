@@ -8,16 +8,30 @@ class Enemy {
     this.height = 100;
     this.hp = 100;
     this.speed = 1;
+    this.skins = [];
+    this.time = 0
 
     this.frame = 0;
     this.minFrame = 0;
     this.maxFrame = 11;
     this.spriteWidth = 522;
     this.spriteHeight = 422;
-    this.img = new Image();
-    this.img.src = 'images/ghost.png';
-    this.img.alt = 'alt';
-    this.time = 0
+
+    this.img1 = new Image();
+    this.img1.src = 'images/ghost1.png';
+    this.img1.alt = 'alt';
+
+    this.img2 = new Image();
+    this.img2.src = 'images/ghost2.png';
+    this.img2.alt = 'alt';
+
+    this.img3 = new Image();
+    this.img3.src = 'images/ghost3.png';
+    this.img3.alt = 'alt';
+
+    this.skins.push(this.img1)
+    this.skins.push(this.img2)
+    this.skins.push(this.img3)
   }
 
   move() {
@@ -38,9 +52,9 @@ class Enemy {
     // const ctx = canvas.getContext('2d');
     // ctx.fillStyle = 'gray';
     // ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.drawImage(this.img, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.skins[0], this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
   }
-
+//Math.floor(Math.random()* 3)
 }
 
 export default Enemy
