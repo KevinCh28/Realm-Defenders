@@ -42,7 +42,7 @@ class GameView {
     this.repeat = requestAnimationFrame(this.start.bind(this))
 
     for (let i = 0; i < this.enemies.length; i++) {
-      if (this.enemies[i].x < 0) {
+      if (this.enemies[i].x < -35) {
         this.gameOver(this.ctx);
       }
     }
