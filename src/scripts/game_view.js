@@ -6,7 +6,6 @@ import EnemyBig from "./enemy_big.js";
 class GameView {
   constructor(ctx) {
     this.ctx = ctx;
-    // this.game = new Board();
     this.time = 0;
     this.defenders = [];
     this.projectiles = [];
@@ -28,6 +27,13 @@ class GameView {
     // canvas.removeEventListener('click', restart)
 
     // this.mousePos = canvas.getBoundingClientRect() ///???
+
+    if (this.enemies.length > 0 && this.highScore % 2000 === 0) {
+      for (let i = 0; i < this.enemies.length; i++) {
+        this.enemies[i].speed = 1;
+      }
+      this.highScore += 100;
+    }
 
     if (this.time % 500 === 0) {
       let yPos = Math.floor(Math.random() * 5);   //random 0-4
