@@ -1,18 +1,18 @@
 import GameView from "./game_view";
 
 class StartScreen {
-  constructor (ctx) {
+  constructor(ctx) {
     this.ctx = ctx;
-    this.backGroundImg = new Image();
-    this.backGroundImg.src = 'images/background1.png';
-    this.backGroundImg.alt = 'alt';
+    this.startImage = new Image();
+    this.startImage.src = 'images/background1.png';
+    this.startImage.alt = 'alt';
   }
 
   begin() {
     const canvas = document.getElementById('game-canvas');
     let that = this;
-    this.ctx.clearRect(0, 0, 900, 600);
-    this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
+    // this.ctx.clearRect(0, 0, 900, 600);
+    this.ctx.drawImage(this.startImage, 0, 0, 900, 600);
     
     this.ctx.fillStyle = 'black';
     this.ctx.font = '20px arial';
@@ -32,13 +32,11 @@ class StartScreen {
     this.ctx.fillText('*no relations to real life events/places', 640, 585)
 
     canvas.addEventListener('click', function() {
-
       //need to remove event listener
-      // canvas.removeEventListener('click')
-
+      //canvas.removeEventListener('click')
       let gv = new GameView(that.ctx);
       gv.start();
-    }, {once:true})
+    }, {once:true});
   }
 
 

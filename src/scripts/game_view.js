@@ -1,9 +1,10 @@
 import Enemy from "./enemy.js"
 import Defender from "./defender.js";
 import Projectile from "./projectile.js";
+import EnemyBig from "./enemy_big.js";
 
 class GameView {
-  constructor (ctx) {
+  constructor(ctx) {
     this.ctx = ctx;
     // this.game = new Board();
     this.time = 0;
@@ -15,7 +16,7 @@ class GameView {
     this.killCount = 0;
 
     this.backGroundImg = new Image();
-    this.backGroundImg.src = 'images/game_background_4.png';
+    this.backGroundImg.src = 'images/game_background_3.png';
     this.backGroundImg.alt = 'alt';
   }
 
@@ -40,12 +41,29 @@ class GameView {
     }
 
     if (this.highScore % 2000 === 0 && this.highScore !== 0) {
-      let yPos = Math.floor(Math.random() * 5);
-      this.enemies.push(new Enemy(yPos + 1));
+      let yPos = Math.floor(Math.random() * 4);
+      this.enemies.push(new EnemyBig(yPos + 1));
+      this.highScore += 100
+      this.resource += 300
+    }
+
+    if (this.highScore % 6000 === 0 && this.highScore !== 0) {
+      let yPos = Math.floor(Math.random() * 4);
+      this.enemies.push(new EnemyBig(yPos + 1));
+      this.enemies.push(new EnemyBig(yPos + 1));
       this.enemies.push(new Enemy(yPos + 1));
       this.enemies.push(new Enemy(yPos + 1));
       this.highScore += 100
+      this.resource += 300
     }
+
+    // if (this.highScore % 2000 === 0 && this.highScore !== 0) {
+    //   let yPos = Math.floor(Math.random() * 5);
+    //   this.enemies.push(new Enemy(yPos + 1));
+    //   this.enemies.push(new Enemy(yPos + 1));
+    //   this.enemies.push(new Enemy(yPos + 1));
+    //   this.highScore += 100
+    // }
 
     this.repeat = requestAnimationFrame(this.start.bind(this))
 
