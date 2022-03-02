@@ -46,21 +46,30 @@ class GameView {
       this.killCount -= 1
     }
 
+    if (this.highScore % 2000 === 0 && this.killCount === 3) {
+      let yPos = Math.floor(Math.random() * 5);
+      this.enemies.push(new Enemy(yPos + 1));
+      this.killCount -= 1
+    }
+
     if (this.highScore % 2000 === 0 && this.highScore !== 0) {
       let yPos = Math.floor(Math.random() * 4);
       this.enemies.push(new EnemyBig(yPos + 1));
       this.highScore += 100
-      this.resource += 300
+      this.resource += 100
     }
 
     if (this.highScore % 6000 === 0 && this.highScore !== 0) {
       let yPos = Math.floor(Math.random() * 4);
       this.enemies.push(new EnemyBig(yPos + 1));
-      this.enemies.push(new EnemyBig(yPos + 1));
-      this.enemies.push(new Enemy(yPos + 1));
-      this.enemies.push(new Enemy(yPos + 1));
       this.highScore += 100
-      this.resource += 300
+    }
+
+    if (this.highScore > 5000) {
+      if (this.time % 500 === 0) {
+        let yPos = Math.floor(Math.random() * 5);
+        this.enemies.push(new EnemyBig(yPos + 1));
+      }
     }
 
     // if (this.highScore % 2000 === 0 && this.highScore !== 0) {
