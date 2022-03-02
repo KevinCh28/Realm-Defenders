@@ -1,5 +1,3 @@
-import GameView from "./game_view";
-
 class EnemyBig {
   constructor(y) {
     this.x = 900;   //start at the right side
