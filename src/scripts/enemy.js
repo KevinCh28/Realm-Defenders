@@ -53,7 +53,7 @@ class Enemy {
     // const canvas = document.getElementById('game-canvas');
     // const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'red';
-    ctx.fillRect(this.x + 25, this.y, this.hp / 2, 5);
+    ctx.fillRect(this.x + 25, this.y + 5, this.hp / 2, 5);
     ctx.drawImage(this.selectedSkin, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
   }
 //Math.floor(Math.random()* 3)

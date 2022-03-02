@@ -36,7 +36,7 @@ class Defender {
     // const canvas = document.getElementById('game-canvas');
     // const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'red';
-    ctx.fillRect(this.x + 25, this.y, this.hp / 4, 5);
+    ctx.fillRect(this.x + 25, this.y + 5, this.hp / 4, 5);
     ctx.drawImage(this.img, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height); //file, first4 source, last4 destination
   }
 

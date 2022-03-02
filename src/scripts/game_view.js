@@ -74,9 +74,10 @@ class GameView {
 
   gameOver(ctx, canvas) {
     ctx.fillStyle = 'red';
-    ctx.font = '70px Moonhouse';
-    ctx.fillText('Game Over!', 300, 300);
+    ctx.font = '70px arial';
+    ctx.fillText('GAME OVER', 250, 300);
 
+    ctx.fillStyle = 'yellow'
     ctx.font = '20px Moonhouse';
     ctx.fillText('click to restart', 400, 400)
     cancelAnimationFrame(this.repeat)
@@ -94,7 +95,7 @@ class GameView {
 
   myMenu(ctx) {
     ctx.fillStyle = 'black';
-    ctx.font = 'bold 20px Moonhouse';
+    ctx.font = 'bold 20px arial';
     ctx.fillText('HIGH SCORE: ' + this.highScore, 400, 30);
     ctx.fillText('RESOURCE: ' + this.resource, 400, 70);
   }
