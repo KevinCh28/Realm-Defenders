@@ -12,11 +12,9 @@ Not based on real life!
 Realm Defender, users will be able to:
 
 User can:
-Click to start game/new game
-Click to select from 2-4 different kind of defenders
-Click to places defender on a spot on the board(of grids)
-
-
+Click to start game/restart game at gameover
+Click to select from 2-4 different kind of defenders(maybe, if theres enough time)
+Click to places defender on a spot on the canvas(made like a grid)
 
 Notes:
 Defender has a cost(resource) to spawn.
@@ -40,7 +38,7 @@ Projectile ignores defender, makes it no friendly fire.
 Canvas
 
 Wireframes:
-Game board 900x600
+Game board 9x6
 On the top starting from the left, there will be 2-4 clickable defenders(maybe additonal choice depending on time) to choose from, highscore count tracker, resource count trackerand nav link at the right top corner.
 Grid will be 9x5
 Color scheme outside of the game board will be black
