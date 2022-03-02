@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.fillText('Keep an eye on your resources, each defender consumes 100 resource.', 100, 300);
     ctx.fillText('Defeating monsters will acquire 50 resource.', 100, 350);
 
+    ctx.fillStyle = 'red';
+    ctx.fillRect(350, 425, 202, 30);
+
     ctx.fillStyle = 'yellow'
     ctx.font = '25px arial';
     ctx.fillText('CLICK TO START', 350, 450);
