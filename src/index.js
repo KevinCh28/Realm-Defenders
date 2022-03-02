@@ -1,8 +1,8 @@
-import Board from "./scripts/board";
 import GameView from "./scripts/game_view";
+import StartScreen from "./scripts/start_screen";
 
-window.Board = Board;
-window.GameView = GameView;
+
+// window.GameView = GameView;
 
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('game-canvas');
@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.width = 900;
   canvas.height = 600;
 
-  let gv = new GameView(ctx);
-  gv.start()
+  let gv = new StartScreen(ctx);
+  gv.begin()
+
+  // let gv = new GameView(ctx);
+  // gv.start()
 
 });

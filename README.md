@@ -3,7 +3,7 @@ https://kevinch28.github.io/js_project_2/
 Monsters have invaded the peaceful realm of Mekraine and have made their way to your village. Pick up your weapons and protect your home!
 
 Place defenders on the screen, by clicking, to stop the progressing monsters.
-Watch out for your resources, each defender consumes resources, defeating monsters will acquire resources.
+Keep an eye on your resources, each defender consumes resources, defeating monsters will acquire resources.
 
 Not based on real life!
 

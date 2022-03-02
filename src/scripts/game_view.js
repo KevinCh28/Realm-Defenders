@@ -1,4 +1,3 @@
-import Board from "./board.js"
 import Enemy from "./enemy.js"
 import Defender from "./defender.js";
 import Projectile from "./projectile.js";
@@ -38,6 +37,14 @@ class GameView {
       let yPos = Math.floor(Math.random() * 5);
       this.enemies.push(new Enemy(yPos + 1));
       this.killCount -= 1
+    }
+
+    if (this.highScore % 2000 === 0 && this.highScore !== 0) {
+      let yPos = Math.floor(Math.random() * 5);
+      this.enemies.push(new Enemy(yPos + 1));
+      this.enemies.push(new Enemy(yPos + 1));
+      this.enemies.push(new Enemy(yPos + 1));
+      this.highScore += 100
     }
 
     this.repeat = requestAnimationFrame(this.start.bind(this))
