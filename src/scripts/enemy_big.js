@@ -38,7 +38,7 @@ class EnemyBig {
     this.x -= this.speed;
     this.time += 1
 
-    if (this.time % 8 == 0) {
+    if (this.time % 6 === 0) {
       if (this.frame < this.maxFrame) {
         this.frame += 1;
       } else {

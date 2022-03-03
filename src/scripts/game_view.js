@@ -2,6 +2,7 @@ import Enemy from "./enemy.js"
 import Defender from "./defender.js";
 import Projectile from "./projectile.js";
 import EnemyBig from "./enemy_big.js";
+import DefenderUpgrade1 from "./defender_upgrade1.js";
 
 class GameView {
   constructor(ctx) {
@@ -10,7 +11,7 @@ class GameView {
     this.defenders = [];
     this.projectiles = [];
     this.enemies = [];
-    this.resource = 400;
+    this.resource = 500;
     this.highScore = 0;
     this.killCount = 0;
 
@@ -46,10 +47,18 @@ class GameView {
       this.killCount -= 1
     }
 
-    if (this.highScore % 2000 === 0 && this.killCount === 3) {
-      let yPos = Math.floor(Math.random() * 5);
+    if (this.highScore % 2100 === 0 && this.highScore !== 0) {
+      let yPos = Math.floor(Math.random() * 4);
       this.enemies.push(new Enemy(yPos + 1));
-      this.killCount -= 1
+      this.highScore += 100
+      this.resource += 100
+    }
+
+    if (this.highScore % 2200 === 0 && this.highScore !== 0) {
+      let yPos = Math.floor(Math.random() * 4);
+      this.enemies.push(new Enemy(yPos + 1));
+      this.highScore += 100
+      this.resource += 100
     }
 
     if (this.highScore % 2000 === 0 && this.highScore !== 0) {
@@ -65,20 +74,11 @@ class GameView {
       this.highScore += 100
     }
 
-    if (this.highScore > 5000) {
-      if (this.time % 500 === 0) {
-        let yPos = Math.floor(Math.random() * 5);
-        this.enemies.push(new EnemyBig(yPos + 1));
-      }
+    if (this.highScore > 5000 && this.time % 500 === 0) {
+      let yPos = Math.floor(Math.random() * 4);
+      this.enemies.push(new EnemyBig(yPos + 1));
+      this.enemies.push(new EnemyBig(yPos + 1));
     }
-
-    // if (this.highScore % 2000 === 0 && this.highScore !== 0) {
-    //   let yPos = Math.floor(Math.random() * 5);
-    //   this.enemies.push(new Enemy(yPos + 1));
-    //   this.enemies.push(new Enemy(yPos + 1));
-    //   this.enemies.push(new Enemy(yPos + 1));
-    //   this.highScore += 100
-    // }
 
     this.repeat = requestAnimationFrame(this.start.bind(this))
 
@@ -88,7 +88,9 @@ class GameView {
       }
     }
 
-    canvas.addEventListener('click', function(e) {    //not sure how to bind 'this'
+    // this.upGradeUnit(canvas, this);
+
+    canvas.addEventListener('click', function(e) {
       let mousePos = that.getMousePosition(canvas, e)
 
       let posX = mousePos.x - (mousePos.x % 100);
@@ -99,6 +101,17 @@ class GameView {
         that.resource -= 100
       }
     })
+    
+    // if (that.resource >= 200 && posY >= 100 && (that.avaibleSpot(posX, posY) === false)) {
+    //   for (let i = 0; i < that.defenders.length; i++) {
+    //     if (that.defenders[i].x === posX && that.defenders[i].y === posY) {
+    //       that.defenders.splice(i, 1);
+
+    //       that.defenders.push(new DefenderUpgrade1(posX, posY))
+    //       that.resource -= 200
+    //     }
+    //   }
+    // }
 
     this.myMenu(this.ctx);
     this.drawEnemy()
@@ -125,6 +138,8 @@ class GameView {
   }
 
   avaibleSpot(posX, posY) {
+    if (this.defenders.length === 0) return true;
+
     for (let i = 0; i < this.defenders.length; i ++) {
       if (this.defenders[i].x === posX && this.defenders[i].y === posY) {
         return false
@@ -136,8 +151,8 @@ class GameView {
   myMenu(ctx) {
     ctx.fillStyle = 'black';
     ctx.font = 'bold 20px arial';
-    ctx.fillText('HIGH SCORE: ' + this.highScore, 400, 30);
-    ctx.fillText('RESOURCE: ' + this.resource, 400, 70);
+    ctx.fillText('HIGH SCORE: ' + this.highScore, 370, 30);
+    ctx.fillText('RESOURCE: ' + this.resource, 370, 70);
   }
 
   enemyCollidesWithDefender() {
@@ -157,8 +172,7 @@ class GameView {
     }
   }
 
-  isCollidedWith(obj1, obj2) {            //assume obj1 is on the left side
-    // if (obj1.y === obj2.y && (obj1.x + obj1.width) > obj2.x ) { 
+  isCollidedWith(obj1, obj2) {
     if (obj1.x < obj2.x + obj2.width &&
         obj1.x + obj1.width > obj2.x &&
         obj1.y < obj2.y + obj2.height &&
@@ -237,11 +251,7 @@ class GameView {
   }
 
   newGame(canvas) {
-
     let restart = canvas.addEventListener('click', function() {
-      // Program.restart()
-      // document.restart()
-      // document.reload()
       window.location.reload()
     })
   }
