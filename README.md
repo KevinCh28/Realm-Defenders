@@ -2,19 +2,17 @@ https://kevinch28.github.io/js_project_2/
 
 Monsters have invaded the peaceful realm of Mekraine and have made their way to your village. Pick up your weapons and protect your home!
 
-Place defenders on the screen, by clicking, to stop the progressing monsters.
-Keep an eye on your resources, each defender consumes resources, defeating monsters will acquire resources.
+Monsters will appear from the right side of the screen.
+If monsters reach the left side, GAMEOVER!
+Place villagers(defender) on the screen, by clicking on a spot on the screen. 
+*villagers are fragile, best to place them on far left.
+Keep an eye on your resources, each villager consumes 100 resource, defeating monsters will acquire 50 resources.
 
-Not based on real life!
 
+Features:
+Collsion between projectile vs monsters, monsters vs defenders
+Rendering defender on canvas, grid-like setup
 
-
-Realm Defender, users will be able to:
-
-User can:
-Click to start game/restart game at gameover
-Click to select from 2-4 different kind of defenders(maybe, if theres enough time)
-Click to places defender on a spot on the canvas(made like a grid)
 
 Notes:
 Defender has a cost(resource) to spawn.
@@ -38,14 +36,12 @@ Projectile ignores defender, makes it no friendly fire.
 Canvas
 
 Wireframes:
-Game board 9x6
 On the top starting from the left, there will be 2-4 clickable defenders(maybe additonal choice depending on time) to choose from, highscore count tracker, resource count trackerand nav link at the right top corner.
 Grid will be 9x5
 Color scheme outside of the game board will be black
 
-Timeline:
-Friday/weekend: setup project, webpack. Get canvas to show up on the screen. Create Board and Cell classes. Get grid rendered to the canvas reflecting the intial state of the cells.
-Monday: Dedicate this say towards implementing the underlying logic of defender, enemy, projectile. Make sure everything is rendered correctly.
-Tuesday: Focus on user controls: clicking on cells
-Wednesday: Focus on styling, nav links
-Thursday: Deploy to GitHub pages. If time, rewrite tis proposal as a production README.
+
+Features not implemented
+1) Upgradable units
+2) Collison sound effect
+
