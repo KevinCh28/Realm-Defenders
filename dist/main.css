@@ -1,15 +1,30 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+
 body {
   background-color: black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+#header-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  color: lightblue;
 }
 
 #github-button {
-  position: fixed;
-  left: 50%;
-  top: 2%;
-  transform: translateX(-50%);
+  color: lightblue;
+  margin-left: 20px;
 }
 
 #game-canvas {
@@ -20,4 +35,23 @@ body {
   transform: translate(-50%, -50%);
   width: 900px;
   height: 600px;
+}
+
+#instructions-container {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #fff;
+}
+
+#instructions-title {
+  font-weight: 700;
+  margin: 0;
+}
+
+#instructions-item {
+  margin: 0;
 }

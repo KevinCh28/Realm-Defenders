@@ -6,19 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./dist/main.css" />
+  <script src="https://kit.fontawesome.com/8248b57d3d.js" crossorigin="anonymous"></script>
   <script src="./dist/main.js"></script>
   <title>Realm Defenders</title>
   <link rel="icon" type="image/x-icon" href="./images/favicon.png">
 </head>
 
-<body>
+<body id="body">
 
   <div id="header">
-    <div id="github-button">
-      <a href="https://github.com/KevinCh28">
-        <input type="submit" value="GitHub: Kevin Chen">
-      </a>
+    <div id="header-title">Realm Defenders</div>
+    <div id="header-links">
+      <a href="http://github.com/KevinCh28" target="_blank" id="github-button">
+        <i class="fa-brands fa-github fa-2x"></i></a>
+      <a href="https://angel.co/u/kevin-chen-154" target="_blank" id="github-button">
+        <i class="fa-brands fa-angellist fa-2x"></i></a>
+      <a href="https://www.linkedin.com/in/kevin-chen-b6843213a/" target="_blank" id="github-button">
+        <i class="fa-brands fa-linkedin fa-2x"></i></a>
     </div>
+  </div>
+
+  <div id="instructions-container">
+    <p id="instructions-title">Instrctuions</p>
+    <p id="instructions-item">1) Monsters appears from the right side of the map</p>
+    <p id="instructions-item">2) Game over when monster reaches left side of the map</p>
+    <p id="instructions-item">3) Place defender unit by clicking on the map</p>
+    <p id="instructions-item">4) Select defender by clicking on selectable units from top left corner</p>
+    <p id="instructions-item">5) Defender will throw weapons to kill monsters in their row</p>
+    <p id="instructions-item">*Hint* Place defenders far left on same row as an monster</p>
+    <p></p>
+    <p></p>
+    <p id="instructions-title">Units</p>
+    <p id="instructions-item">1) Defender 1 is selected by default at the start of the game (cost 100 resource)</p>
+    <p id="instructions-item">2) Switch between defenders to summon by clicking on one at the top left corner</p>
   </div>
 
   <canvas id="game-canvas"></canvas>

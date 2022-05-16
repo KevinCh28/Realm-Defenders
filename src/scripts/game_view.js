@@ -14,10 +14,12 @@ class GameView {
     this.resource = 500;
     this.highScore = 0;
     this.killCount = 0;
+    this.selectedDefender = 1;
 
     this.backGroundImg = new Image();
     this.backGroundImg.src = 'images/game_background_3.png';
     this.backGroundImg.alt = 'alt';
+    this.summonUnit = this.summonUnit.bind(this);
   }
 
   start() {
@@ -88,30 +90,8 @@ class GameView {
       }
     }
 
-    // this.upGradeUnit(canvas, this);
-
-    canvas.addEventListener('click', function(e) {
-      let mousePos = that.getMousePosition(canvas, e)
-
-      let posX = mousePos.x - (mousePos.x % 100);
-      let posY = mousePos.y - (mousePos.y % 100);
-
-      if (that.resource >= 100 && posY >= 100 && that.avaibleSpot(posX, posY)) {
-        that.defenders.push(new Defender(posX, posY))
-        that.resource -= 100
-      }
-    })
-    
-    // if (that.resource >= 200 && posY >= 100 && (that.avaibleSpot(posX, posY) === false)) {
-    //   for (let i = 0; i < that.defenders.length; i++) {
-    //     if (that.defenders[i].x === posX && that.defenders[i].y === posY) {
-    //       that.defenders.splice(i, 1);
-
-    //       that.defenders.push(new DefenderUpgrade1(posX, posY))
-    //       that.resource -= 200
-    //     }
-    //   }
-    // }
+    // canvas.addEventListener('click', e => this.summonUnit(e))
+    // canvas.removeEventListener('click', e => this.summonUnit(e));
 
     this.myMenu(this.ctx);
     this.drawEnemy()
@@ -121,9 +101,43 @@ class GameView {
     this.projectileCollidedWithEnemy()
     this.time += 1;
   }
+
+  startEventListener() {
+    const canvas = document.getElementById('game-canvas');
+    canvas.addEventListener('click', e => this.summonUnit(e))
+  }
 ////////////////////////////
 ////////////////////////////
 ////////////////////////////
+
+  summonUnit(e) {
+    e.preventDefault()
+    const canvas = document.getElementById('game-canvas');
+    canvas.removeEventListener('click', e => this.summonUnit(e));
+
+    let mousePos = this.getMousePosition(canvas, e)
+    let posX = mousePos.x - (mousePos.x % 100);
+    let posY = mousePos.y - (mousePos.y % 100);
+
+    // if (this.resource >= 300 && posY >= 100 && this.avaibleSpot(posX, posY) === false && this.selectedDefender === 2) {
+    //   for (let i = 0; i < this.defenders.length; i++) {
+    //     if (this.defenders[i].x === posX && this.defenders[i].y === posY) {
+    //       this.defenders[i] = new DefenderUpgrade1(posX, posY)
+    //       this.resource -= 300
+    //     }
+    //   }
+    if (this.resource >= 300 && posY >= 100 && this.avaibleSpot(posX, posY) && this.selectedDefender === 2) {
+      this.defenders.push(new DefenderUpgrade1(posX, posY))
+      this.resource -= 300
+    } else if (this.resource >= 100 && posY >= 100 && this.avaibleSpot(posX, posY) && this.selectedDefender === 1) {
+      this.defenders.push(new Defender(posX, posY))
+      this.resource -= 100
+    } else if (posX >= 0 && posX < 100 && posY >= 0 && posY < 100) {
+      this.selectedDefender = 1
+    } else if (posX >= 100 && posX < 200 && posY >= 0 && posY < 100) {
+      this.selectedDefender = 2
+    }
+  }
 
   gameOver(ctx, canvas) {
     ctx.fillStyle = 'red';
@@ -153,6 +167,36 @@ class GameView {
     ctx.font = 'bold 20px arial';
     ctx.fillText('HIGH SCORE: ' + this.highScore, 370, 30);
     ctx.fillText('RESOURCE: ' + this.resource, 370, 70);
+
+    ctx.fillStyle = 'black';
+    ctx.font = 'bold 20px arial';
+    ctx.fillText('100', 60, 90);
+    ctx.fillText('300', 160, 90);
+
+    let defender1_img = new Image();
+    defender1_img.src = 'images/defender1.png';
+    defender1_img.alt = 'alt';
+
+    let defender2_img = new Image();
+    defender2_img.src = 'images/defender3.png';
+    defender2_img.alt = 'alt';
+
+    ctx.drawImage(defender1_img, 0 * 522, 0, 522, 422, 0, 0, 100, 100);
+    ctx.drawImage(defender2_img, 0 * 522, 0, 522, 422, 100, 0, 100, 100);
+
+    if (this.selectedDefender === 1) {
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(0, 0, 100, 3);
+      ctx.fillRect(0, 97, 100, 3);
+      ctx.fillRect(0, 0, 3, 100);
+      ctx.fillRect(97, 0, 3, 100);
+    } else if (this.selectedDefender === 2) {
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(100, 0, 100, 3);
+      ctx.fillRect(100, 97, 100, 3);
+      ctx.fillRect(100, 0, 3, 100);
+      ctx.fillRect(197, 0, 3, 100);
+    }
   }
 
   enemyCollidesWithDefender() {
