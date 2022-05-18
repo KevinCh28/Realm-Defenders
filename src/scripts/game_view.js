@@ -27,9 +27,6 @@ class GameView {
     let that = this;
     this.ctx.clearRect(0, 0, 900, 600);
     this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
-    // canvas.removeEventListener('click', restart)
-
-    // this.mousePos = canvas.getBoundingClientRect() ///???
 
     if (this.enemies.length > 0 && this.highScore % 2000 === 0) {
       for (let i = 0; i < this.enemies.length; i++) {
@@ -90,10 +87,8 @@ class GameView {
       }
     }
 
-    // canvas.addEventListener('click', e => this.summonUnit(e))
-    // canvas.removeEventListener('click', e => this.summonUnit(e));
-
     this.myMenu(this.ctx);
+    this.drawPointed(this.ctx)
     this.drawEnemy()
     this.drawDefenders()
     this.drawProjectiles()
@@ -113,19 +108,11 @@ class GameView {
   summonUnit(e) {
     e.preventDefault()
     const canvas = document.getElementById('game-canvas');
-    canvas.removeEventListener('click', e => this.summonUnit(e));
 
     let mousePos = this.getMousePosition(canvas, e)
     let posX = mousePos.x - (mousePos.x % 100);
     let posY = mousePos.y - (mousePos.y % 100);
 
-    // if (this.resource >= 300 && posY >= 100 && this.avaibleSpot(posX, posY) === false && this.selectedDefender === 2) {
-    //   for (let i = 0; i < this.defenders.length; i++) {
-    //     if (this.defenders[i].x === posX && this.defenders[i].y === posY) {
-    //       this.defenders[i] = new DefenderUpgrade1(posX, posY)
-    //       this.resource -= 300
-    //     }
-    //   }
     if (this.resource >= 300 && posY >= 100 && this.avaibleSpot(posX, posY) && this.selectedDefender === 2) {
       this.defenders.push(new DefenderUpgrade1(posX, posY))
       this.resource -= 300
@@ -160,6 +147,25 @@ class GameView {
       } 
     }
     return true
+  }
+
+  drawPointed(ctx) {
+    const canvas = document.getElementById('game-canvas');
+
+    canvas.addEventListener('mouseover', function (e) {
+      e.preventDefault()
+      let mousePos = this.getMousePosition(canvas, e)
+      let posX = mousePos.x - (mousePos.x % 100);
+      let posY = mousePos.y - (mousePos.y % 100);
+      console.log(posX)
+      console.log(posY)
+
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(posX, posY, 100, 3);
+      ctx.fillRect(posX, posY, 100, 3);
+      ctx.fillRect(posX, posY, 3, 100);
+      ctx.fillRect(posX, posY, 3, 100);
+    })
   }
 
   myMenu(ctx) {
