@@ -66,10 +66,17 @@ body {
 }
 
 #instructions-title {
+  text-decoration: underline;
   font-weight: 700;
+  text-align: center;
   margin: 0;
 }
 
 #instructions-item {
   margin: 0;
+  margin-bottom: 5px;
+}
+
+#instruction-image {
+  text-align: center;
 }
