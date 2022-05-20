@@ -132,7 +132,7 @@ class GameView {
     ctx.fillText('GAME OVER', 250, 300);
 
     ctx.fillStyle = 'yellow'
-    ctx.font = '20px Moonhouse';
+    ctx.font = '20px arial';
     ctx.fillText('click to restart', 400, 400)
     cancelAnimationFrame(this.repeat)
     this.newGame(canvas)
