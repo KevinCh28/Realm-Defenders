@@ -1,0 +1,78 @@
+body {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+#header-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: lightblue;
+  margin-left: 430px;
+  margin-top: 10px;
+}
+
+#github-button {
+  color: lightblue;
+  margin-left: 20px;
+}
+
+#game-canvas {
+  background-color: white;
+  /* position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  margin-top: 20px;
+  width: 900px;
+  height: 600px;
+}
+
+#info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#instructions-container {
+  width: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+#unit-container {
+  width: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 50px;
+  margin-right: 20px;
+}
+
+#instructions-title {
+  text-decoration: underline;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+#instructions-item {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#instruction-image {
+  text-align: center;
+}
