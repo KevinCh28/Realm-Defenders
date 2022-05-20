@@ -25,7 +25,7 @@ class GameView {
   start() {
     const canvas = document.getElementById('game-canvas');
     let that = this;
-    this.ctx.clearRect(0, 0, 900, 600);
+    // this.ctx.clearRect(0, 0, 900, 600);
     this.ctx.drawImage(this.backGroundImg, 0, 0, 900, 600);
 
     if (this.enemies.length > 0 && this.highScore % 2000 === 0) {
